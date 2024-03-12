@@ -6,6 +6,7 @@ declare global {
     interface ProcessEnv {
       U_VERSION: TUVersion;
       M_VERSION: string;
+      PLATFORM_NAME: string;
     }
   }
 }

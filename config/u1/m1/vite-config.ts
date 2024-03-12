@@ -11,6 +11,7 @@ export default defineConfig(() => {
       'process.env': {
         U_VERSION: uVersion,
         M_VERSION: mVersion,
+        PLATFORM_NAME: platformName,
       },
     },
     plugins: [htmlPlugin(platformName, uVersion, mVersion)],

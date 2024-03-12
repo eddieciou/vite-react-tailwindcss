@@ -1,7 +1,15 @@
+import { useEffect } from 'react';
+
 function App() {
+  useEffect(() => {
+    import(
+      `../config/${process.env.U_VERSION}/${process.env.M_VERSION}/theme.css`
+    );
+  }, []);
+
   return (
     <>
-      <div className="flex w-full bg-pink-400">
+      <div className="flex w-full bg-[var(--primary-main-from)]">
         {process.env.U_VERSION}RRRR
         <img
           alt="test"
