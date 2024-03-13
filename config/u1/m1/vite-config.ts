@@ -1,12 +1,6 @@
 import { defineConfig } from 'vite';
 import { htmlPlugin } from '../../plugins';
-// import { fileURLToPath } from 'node:url';
-//
-// const filesNeedToExclude = ['public/u1/m1/vite.svg'];
-//
-// const filesPathToExclude = filesNeedToExclude.map((src) => {
-//   return fileURLToPath(new URL(src, import.meta.url));
-// });
+import tailwindcss from 'tailwindcss';
 
 export default defineConfig(({ mode }) => {
   const uVersion = 'u1';
@@ -23,5 +17,12 @@ export default defineConfig(({ mode }) => {
     },
     plugins: [htmlPlugin(platformName, uVersion, mVersion)],
     publicDir: mode === 'production' ? 'assets' : 'public',
+    css: {
+      postcss: {
+        plugins: [
+          tailwindcss({ config: `config/${uVersion}/tailwind.config.js` }),
+        ],
+      },
+    },
   };
 });

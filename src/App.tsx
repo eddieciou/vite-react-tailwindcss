@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import licenseImage from '../commonImages/license.png';
 
 function App() {
   useEffect(() => {
@@ -15,6 +16,7 @@ function App() {
           alt="test"
           src={`/${process.env.U_VERSION}/${process.env.M_VERSION}/vite.svg`}
         />
+        <img src={licenseImage} alt="license" />
       </div>
     </>
   );
