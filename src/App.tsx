@@ -1,7 +1,27 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import licenseImage from '@commonImages/license.png';
 
-function App() {
+const App = () => {
+  const [importedComponent, setImportedComponent] = useState<any>(null);
+
+  useEffect(() => {
+    const importComponent = async () => {
+      // const module = await import(`./env/${process.env.U_VERSION}/App`);
+      let module;
+      if (process.env.U_VERSION === 'u1') {
+        module = await import('./env/u1/App');
+      }
+
+      if (process.env.U_VERSION === 'u2') {
+        module = await import('./env/u2/App');
+      }
+
+      setImportedComponent(module);
+    };
+
+    importComponent();
+  }, []);
+
   useEffect(() => {
     import(
       `../config/${process.env.U_VERSION}/${process.env.M_VERSION}/theme.css`
@@ -18,8 +38,9 @@ function App() {
         />
         <img src={licenseImage} alt="license" />
       </div>
+      {importedComponent && <importedComponent.default aa={2} />}
     </>
   );
-}
+};
 
 export default App;
