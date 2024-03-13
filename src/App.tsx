@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import licenseImage from '../commonImages/license.png';
+import licenseImage from '@commonImages/license.png';
 
 function App() {
   useEffect(() => {
