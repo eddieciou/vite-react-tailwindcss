@@ -6,7 +6,6 @@ const App = () => {
 
   useEffect(() => {
     const importComponent = async () => {
-      // const module = await import(`./env/${process.env.U_VERSION}/App`);
       let module;
       if (process.env.U_VERSION === 'u1') {
         module = await import('./env/u1/App');

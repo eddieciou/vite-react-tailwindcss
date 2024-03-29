@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 
-import { tailwindVariables } from './tailwind.variables.js';
+import { tailwindVariables } from './tailwind.variables';
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
