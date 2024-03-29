@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import { htmlPlugin } from '../../plugins';
+import { getIPAddress, htmlPlugin } from '../../plugins';
 import tailwindcss from 'tailwindcss';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
@@ -10,6 +10,11 @@ export default defineConfig(({ mode }) => {
   const platformName = 'DEV U1M1';
 
   return {
+    server: {
+      host: getIPAddress(),
+      port: 4002,
+      open: true,
+    },
     define: {
       'process.env': {
         U_VERSION: uVersion,

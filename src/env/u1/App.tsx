@@ -9,6 +9,9 @@ const App = ({ aa }: { aa: number }) => {
       <div>isMobile = {isMobile ? 'True' : 'False'}</div>
       <div>isTablet = {isTablet ? 'True' : 'False'}</div>
       <div>isDesktop = {isDesktop ? 'True' : 'False'}</div>
+      <div className="mobile:bg-blue-500 tablet:bg-yellow-500 bg-pink-400">
+        Tailwind
+      </div>
       <div>U1 APP</div>
       <div>U1 APP</div>
       <div>U1 APP</div>
