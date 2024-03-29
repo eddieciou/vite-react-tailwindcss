@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
 import licenseImage from '@commonImages/license.png';
+import { Router } from './router';
+import { useNavigate } from 'react-router-dom';
+import { PagePathEnum } from './enums/PagePathEnum.ts';
 
 const App = () => {
+  const navigate = useNavigate();
+
   const [importedComponent, setImportedComponent] = useState<any>(null);
 
   useEffect(() => {
@@ -36,8 +41,23 @@ const App = () => {
           src={`/${process.env.U_VERSION}/${process.env.M_VERSION}/vite.svg`}
         />
         <img src={licenseImage} alt="license" />
+        <div className="flex flex-col gap-2">
+          <button
+            className="block bg-yellow-500 p-2"
+            onClick={() => navigate(PagePathEnum.IndexPage)}
+          >
+            IndexPage
+          </button>
+          <button
+            className="block bg-yellow-500 p-2"
+            onClick={() => navigate(PagePathEnum.VIPGradePage)}
+          >
+            VIPGradePage
+          </button>
+        </div>
       </div>
-      {importedComponent && <importedComponent.default aa={2} />}
+      {/*{importedComponent && <importedComponent.default aa={2} />}*/}
+      <Router />
     </>
   );
 };
