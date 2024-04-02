@@ -8,12 +8,26 @@ export const IndexPage = () => {
     <div>
       U1 IndexPage{location.pathname}
       <motion.div
-        className="flex h-20 w-20 items-center bg-red-500 text-center"
+        className="m-5 flex h-20 w-20 items-center bg-red-500 text-center"
         initial={{ x: 100 }}
         animate={{ x: 10 }}
         transition={{
           duration: 1,
           type: 'spring',
+        }}
+      >
+        framer motion
+      </motion.div>
+      <motion.div
+        className="m-5 flex h-20 w-20 items-center bg-red-500 text-center"
+        initial={{ x: 100, rotate: 45 }}
+        whileHover={{
+          scale: [0.9, 1.2, 1],
+          x: [100, 120, 100, 90, 100],
+        }}
+        transition={{
+          repeat: 3,
+          duration: 0.3,
         }}
       >
         framer motion
