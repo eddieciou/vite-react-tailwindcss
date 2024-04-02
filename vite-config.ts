@@ -49,7 +49,7 @@ export default defineConfig(({ mode }) => {
     ],
     server: {
       host: getIPAddress(),
-      port: 4002,
+      port: 4001,
       open: true,
     },
     css: {
