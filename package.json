@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --config config/u1/m1/vite-config.ts --mode develop",
-    "build": "tsc && vite build --config config/u1/m1/vite-config.ts --mode production",
+    "dev2": "vite --config config/u1/m1/vite-config.ts --mode develop",
+    "dev": "vite --config vite-config.ts --mode u1m1",
+    "build": "tsc && vite build --config vite-config.ts --mode u1m1",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "format": "prettier --write ./src"

@@ -2,12 +2,14 @@
 type TUVersion = 'u1' | 'u2';
 
 declare global {
-  namespace NodeJS {
-    interface ProcessEnv {
-      U_VERSION: TUVersion;
-      M_VERSION: string;
-      PLATFORM_NAME: string;
-    }
+  interface ImportMetaEnv {
+    readonly VITE_U_VERSION: TUVersion;
+    readonly VITE_M_VERSION: string;
+    readonly VITE_PLATFORM_NAME: string;
+  }
+
+  interface ImportMeta {
+    readonly env: ImportMetaEnv;
   }
 }
 

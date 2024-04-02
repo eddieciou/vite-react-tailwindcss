@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { PagePathEnum } from '../enums/PagePathEnum.ts';
-import { IndexPage } from '../containers/IndexPage';
-import { VIPGradePage } from '../containers/VIPGradePage';
+import { IndexPage } from '@uVersionContainers/IndexPage';
+import { VIPGradePage } from '@uVersionContainers/VIPGradePage';
 
 export const Router = () => {
   return (
