@@ -1,37 +1,47 @@
-import { useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { Card } from '../../../components/Card';
+import { useEffect, useRef } from 'react';
+import { useResizeObserver } from 'usehooks-ts';
+import { animate, motion, useMotionValue } from 'framer-motion';
 
 export const IndexPage = () => {
-  const location = useLocation();
+  const ref = useRef<HTMLDivElement>(null);
+
+  const xTranslation = useMotionValue(0);
+
+  const { width = 0 } = useResizeObserver({ ref, box: 'border-box' });
+
+  const images = [
+    `/${import.meta.env.VITE_U_VERSION}/${import.meta.env.VITE_M_VERSION}/banner1.png`,
+    `/${import.meta.env.VITE_U_VERSION}/${import.meta.env.VITE_M_VERSION}/banner2.png`,
+    `/${import.meta.env.VITE_U_VERSION}/${import.meta.env.VITE_M_VERSION}/banner3.png`,
+    `/${import.meta.env.VITE_U_VERSION}/${import.meta.env.VITE_M_VERSION}/banner4.png`,
+    `/${import.meta.env.VITE_U_VERSION}/${import.meta.env.VITE_M_VERSION}/banner5.png`,
+    `/${import.meta.env.VITE_U_VERSION}/${import.meta.env.VITE_M_VERSION}/banner6.png`,
+  ];
+
+  useEffect(() => {
+    const finalPosition = -width - 16;
+    const controls = animate(xTranslation, [0, finalPosition], {
+      ease: 'linear',
+      duration: 10,
+      repeat: Infinity,
+      repeatType: 'loop',
+      repeatDelay: 0,
+    });
+
+    return () => {
+      controls.stop;
+    };
+  }, [xTranslation, width]);
 
   return (
-    <div>
-      U1 IndexPage{location.pathname}
-      <motion.div
-        className="m-5 flex h-20 w-20 items-center bg-red-500 text-center"
-        initial={{ x: 100 }}
-        animate={{ x: 10 }}
-        transition={{
-          duration: 1,
-          type: 'spring',
-        }}
-      >
-        framer motion
+    <div className="w-full overflow-x-hidden py-8">
+      <motion.div ref={ref} className="flex gap-4" style={{ x: xTranslation }}>
+        {[...images, ...images].map((item, index) => (
+          <Card image={item} key={index} width={(width - 16 * 5) / 6} />
+        ))}
       </motion.div>
-      <motion.div
-        className="m-5 flex h-20 w-20 items-center bg-red-500 text-center"
-        initial={{ x: 100, rotate: 45 }}
-        whileHover={{
-          scale: [0.9, 1.2, 1],
-          x: [100, 120, 100, 90, 100],
-        }}
-        transition={{
-          repeat: 3,
-          duration: 0.3,
-        }}
-      >
-        framer motion
-      </motion.div>
+      width = {width}
     </div>
   );
 };
